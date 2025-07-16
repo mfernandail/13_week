@@ -24,3 +24,21 @@ footer {
   padding: 10px;
   text-align: center;
 }
+
+main {
+  text-align: center;
+}
+
+main h1 {
+  margin: 20px 0;
+}
+
+.form_input {
+  padding: 5px 10px;
+  outline: none;
+}
+
+.form_btnAdd {
+  padding: 5px 10px;
+  
+}
