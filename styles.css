@@ -42,3 +42,47 @@ main h1 {
   padding: 5px 10px;
   
 }
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tasks {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid #4CAF50;
+  border-radius: 10px;
+}
+
+.task_done{
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.6;
+}
+
+.task_name {
+  width: 300px;
+  text-align: start;
+}
+
+.task_button {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.search_task {
+  padding: 5px 10px;
+  outline: none;
+  margin-top: 20px;
+}
+
+.hide_search{
+  display: none;
+}
