@@ -3,6 +3,7 @@ const inputTask = document.querySelector('#form_input')
 const form = document.querySelector('.form')
 const taskListResult = document.querySelector('#taskList')
 const searchTask = document.querySelector('.search_task')
+const statesFilter = document.querySelector('#states')
 
 let taskArr = JSON.parse(localStorage.getItem('localTask')) || []
 armarHTML()
@@ -33,6 +34,8 @@ searchTask.addEventListener('keydown', (e) => {
     armarHTML()
   }
 })
+
+statesFilter.addEventListener('', filterState)
 
 function addTask(e) {
   e.preventDefault()
@@ -68,8 +71,12 @@ function deleteDoneTask(e) {
   console.log(taskArr)
 
   if (e.target.classList.contains('task_button_delete')) {
-    taskArr = taskArr.filter((task) => task.id !== idTask)
-    localStorage.setItem('localTask', JSON.stringify(taskArr))
+    const confirmRes = confirm('Quieres eliminar la tarea?')
+
+    if (confirmRes) {
+      taskArr = taskArr.filter((task) => task.id !== idTask)
+      localStorage.setItem('localTask', JSON.stringify(taskArr))
+    }
   } else if (e.target.classList.contains('task_button_done')) {
     const task = taskArr.map((task) => {
       if (task.id === idTask) {
