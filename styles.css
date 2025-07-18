@@ -86,3 +86,12 @@ main h1 {
 .hide_search{
   display: none;
 }
+
+.task_counters {
+  margin-top: 20px;
+}
+.counter_span {
+  margin-right: 10px;
+  padding: 5px 10px;
+}
+
