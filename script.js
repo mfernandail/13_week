@@ -14,6 +14,26 @@ inputTask.addEventListener('keydown', (e) => {
 
 taskListResult.addEventListener('click', deleteDoneTask)
 
+searchTask.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const taskSearchInput = searchTask.value
+
+    const filteredTasks = taskArr.filter((task) =>
+      task.taskName.includes(taskSearchInput)
+    )
+    mostrarTareas(filteredTasks)
+
+    // const existTask = taskArr.some((task) => task.taskName === taskSearchInput)
+
+    // if (existTask) {
+    //   taskArr = taskArr.filter((task) => task.taskName === taskSearchInput)
+    // } else {
+    //   taskArr = JSON.parse(localStorage.getItem('localTask'))
+    // }
+    armarHTML()
+  }
+})
+
 function addTask(e) {
   e.preventDefault()
 
