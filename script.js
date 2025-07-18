@@ -2,8 +2,12 @@ const btnAdd = document.querySelector('#form_btnAdd')
 const inputTask = document.querySelector('#form_input')
 const form = document.querySelector('.form')
 const taskListResult = document.querySelector('#taskList')
+
+const filters = document.querySelector('.filters')
 const searchTask = document.querySelector('.search_task')
 const statesFilter = document.querySelector('#states')
+
+const taskCounters = document.querySelector('#task_counters')
 
 let taskArr = JSON.parse(localStorage.getItem('localTask')) || []
 armarHTML()
@@ -19,23 +23,25 @@ searchTask.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const taskSearchInput = searchTask.value
 
-    const filteredTasks = taskArr.filter((task) =>
-      task.taskName.includes(taskSearchInput)
-    )
-    mostrarTareas(filteredTasks)
+    // const filteredTasks = taskArr.filter((task) =>
+    //   task.taskName.includes(taskSearchInput)
+    // )
+    // mostrarTareas(filteredTasks)
 
-    // const existTask = taskArr.some((task) => task.taskName === taskSearchInput)
+    const existTask = taskArr.some((task) => task.taskName === taskSearchInput)
 
-    // if (existTask) {
-    //   taskArr = taskArr.filter((task) => task.taskName === taskSearchInput)
-    // } else {
-    //   taskArr = JSON.parse(localStorage.getItem('localTask'))
-    // }
+    if (existTask) {
+      taskArr = taskArr.filter((task) => task.taskName === taskSearchInput)
+    } else {
+      taskArr = JSON.parse(localStorage.getItem('localTask'))
+    }
     armarHTML()
   }
 })
 
-statesFilter.addEventListener('', filterState)
+statesFilter.addEventListener('change', filterState)
+
+function filterState(e) {}
 
 function addTask(e) {
   e.preventDefault()
@@ -86,6 +92,7 @@ function deleteDoneTask(e) {
     })
 
     taskArr = task
+    localStorage.setItem('localTask', JSON.stringify(taskArr))
   }
 
   armarHTML()
@@ -93,12 +100,30 @@ function deleteDoneTask(e) {
 
 function armarHTML() {
   taskListResult.innerHTML = ''
+  taskCounters.innerHTML = ''
 
   if (taskArr.length > 0) {
-    searchTask.classList.remove('hide_search')
+    filters.classList.remove('hide_search')
   } else {
-    searchTask.classList.add('hide_search')
+    filters.classList.add('hide_search')
   }
+
+  //const allTask = taskArr.length
+  //const pendingTask = taskArr.filter((task) => task.done === false).length
+  //const doneTask = taskArr.filter((task) => task.done === true).length
+
+  const allTask = document.createElement('span')
+  allTask.textContent = 'All: ' + taskArr.length
+  allTask.classList.add('counter_span')
+
+  const pendingTask = document.createElement('span')
+  pendingTask.textContent =
+    'Pending: ' + taskArr.filter((task) => !task.done).length
+  pendingTask.classList.add('counter_span')
+
+  const doneTask = document.createElement('span')
+  doneTask.textContent = 'Done: ' + taskArr.filter((task) => task.done).length
+  doneTask.classList.add('counter_span')
 
   taskArr.forEach((task) => {
     const row = document.createElement('tr')
@@ -122,5 +147,9 @@ function armarHTML() {
 
     taskListResult.appendChild(row)
   })
+
+  taskCounters.appendChild(allTask)
+  taskCounters.appendChild(pendingTask)
+  taskCounters.appendChild(doneTask)
 }
 
