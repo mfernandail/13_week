@@ -45,7 +45,18 @@
         <input type="button" value="Add" class="form_btnAdd" id="form_btnAdd">
       </form>
 
-      <input type="text" class="search_task" placeholder="Search..."/>
+      <section class="filters">
+        <input type="text" class="search_task" placeholder="Search..."/>
+
+        <select name="states" id="states">
+          <option value="completed">Completed</option>
+          <option value="rending">Pending</option>
+          <option value="all" selected>All</option>
+        </select>
+      </section>
+
+      <section id="task_counters" class="task_counters"></section>
+
       <section id="taskList" class="taskList"></section>
 
     </main>
