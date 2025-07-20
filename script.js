@@ -5,7 +5,7 @@ const taskListResult = document.querySelector('#taskList')
 
 const filters = document.querySelector('.filters')
 const searchTask = document.querySelector('.search_task')
-const statesFilter = document.querySelector('#states')
+const statesFilter = document.querySelector('.states')
 
 const taskCounters = document.querySelector('#task_counters')
 
@@ -41,7 +41,18 @@ searchTask.addEventListener('keydown', (e) => {
 
 statesFilter.addEventListener('change', filterState)
 
-function filterState(e) {}
+function filterState(e) {
+  taskArr = JSON.parse(localStorage.getItem('localTask')) || []
+
+  if (e.target.value === 'all') {
+    taskArr = JSON.parse(localStorage.getItem('localTask')) || []
+  } else if (e.target.value === 'completed') {
+    taskArr = taskArr.filter((task) => task.done)
+  } else {
+    taskArr = taskArr.filter((task) => !task.done)
+  }
+  armarHTML()
+}
 
 function addTask(e) {
   e.preventDefault()
@@ -103,9 +114,10 @@ function armarHTML() {
   taskCounters.innerHTML = ''
 
   if (taskArr.length > 0) {
+    searchTask.disabled = false
     filters.classList.remove('hide_search')
   } else {
-    filters.classList.add('hide_search')
+    searchTask.disabled = true
   }
 
   //const allTask = taskArr.length
