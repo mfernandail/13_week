@@ -6,17 +6,24 @@
 
 ### 🧠 What I do this week:
 
-- Storing and retrieving data from `localStorage`.
-- Rendering content conditionally based on task status (completed/pending).
-- Using event delegation to handle interactions with dynamically generated elements.
-- Building filter controls (All, Completed, Pending).
-- Improving the user experience with CSS transitions and conditional classes.
-- Creating clean and reusable functions for rendering and updating state.
+This project is an improved version of the task manager built during **Week 5**. It’s a fully functional To-Do List built with HTML, CSS, and vanilla JavaScript. It allows users to:
+
+- Add new tasks.
+- Edit existing tasks.
+- Mark tasks as completed or pending.
+- Delete individual tasks.
+- Search for tasks by name.
+- Filter tasks by status (all, completed, pending).
+- View counters for total, pending, and completed tasks.
+- Persist data using `localStorage`.
 
 ---
 
-### 💻 Mini Project: To-Do List App — Version 2
+### 🚀 Improvements Over Week 5 Version
 
-This week's project is a **refactor and upgrade** of the basic To-Do List app created during **Week 5**.
-
-While the original version allowed adding and deleting tasks using vanilla JavaScript, this improved version includes persistent storage, task status management, and a more dynamic user interface.
+- **Edit mode** implemented for existing tasks.
+- **Dynamic search** with partial matching.
+- **Filter by status** (all, completed, pending).
+- **Live counters** for better task overview.
+- Cleaner and more modular code.
+- Enhanced user experience with input focus and better UI feedback.
