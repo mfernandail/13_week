@@ -67,6 +67,7 @@ main h1 {
 .task_name {
   width: 300px;
   text-align: start;
+  cursor: pointer;
 }
 
 .task_button {
