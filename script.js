@@ -58,7 +58,8 @@ function addTask(e) {
 
   if (!task) return
 
-  if (e.target.value === 'add') {
+  if (e.target.value === 'Add') {
+    console.log('ss')
     const taskObj = {
       taskName: task,
       id: Date.now(),
